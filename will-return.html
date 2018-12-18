@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+		$(document).ready(function() {
+			writeReturn(getUrlParameter("name"));
+			let div = $("#william-return");
+			div.delay(2000);
+			div.animate({opacity: '1.0'}, "slow");
+			div.delay(4000);
+			div.animate({opacity: '0'}, "slow");
+		});
+
+		function writeReturn(name) {
+				if (name === undefined) {
+					name = "null";
+				} else {
+					name = atob(name);
+				}
+				var cleanName = "";
+				var letterCount = name.length;
+				for (var index = 0; index < letterCount; index++) {
+					if (index == 0 || name[index-1] === ' ') {
+						cleanName += name[index].toUpperCase();
+					} else {
+						cleanName += name[index];
+					}
+				}
+				$("#william-return").append(document.createTextNode(cleanName+" will return"));
+
+		}
+
+		/*
+   		* getUrlParameter
+		* Input a parameter name
+		* Return the parameter value, 
+		*  boolean true if defined, 
+		*  undefined if not present
+ 		*/
+		function getUrlParameter(sParam) {
+			var sPageURL = window.location.search.substring(1),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,	i;
+			
+			for (i = 0; i < sURLVariables.length; i++) {			
+				sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] === sParam) {
+					return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+				}
+			}
+		};
+
+		</script>
+		<style>
+			body {
+				background-color: black;
+				color: white;
+				text-align: center;
+
+			}
+			div#william-return {
+				opacity: 0;
+				font-size: 2em;
+				position: relative;
+
+
+
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div id="william-return"></div>
+		</div>
+	</body>
+
+</html>
