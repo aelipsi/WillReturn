@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Announcement</title>
+		<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+		$(document).ready(function() {
+			writeReturn(getUrlParameter("name"));
+			doAnimation();
+		});
+		let reset = true;
+		function doAnimation() {
+			if (reset === true) {
+				reset = false;
+				let div = $("#william-return");
+				div.delay(1000);
+				div.animate({opacity: '1.0'}, "slow");
+				div.delay(4000);
+				div.animate({opacity: '0'}, "slow");
+				reset = true;
+			}
+		}
+
+		function writeReturn(name) {
+				if (name === undefined) {
+					name = "null";
+				} else {
+					name = atob(name);
+				}
+				var cleanName = "";
+				var letterCount = name.length;
+				for (var index = 0; index < letterCount; index++) {
+					if (index == 0 || name[index-1] === ' ') {
+						cleanName += name[index].toUpperCase();
+					} else {
+						cleanName += name[index];
+					}
+				}
+				$("#william-return").append(document.createTextNode(cleanName+" will return"));
+
+		}
+
+		/*
+   		* getUrlParameter
+		* Input a parameter name
+		* Return the parameter value, 
+		*  boolean true if defined, 
+		*  undefined if not present
+ 		*/
+		function getUrlParameter(sParam) {
+			var sPageURL = window.location.search.substring(1),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,	i;
+			
+			for (i = 0; i < sURLVariables.length; i++) {			
+				sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] === sParam) {
+					return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+				}
+			}
+		};
+
+		</script>
+		<style>
+			html, body {
+				background-color: black;
+				color: white;
+				height: 100%;
+				width: 100%;
+				margin: 0;
+			}
+			div#william-return {
+				opacity: 0;
+				font-size: 400%;
+				font-family: 'Play', sans-serif;
+			}
+
+			.Aligner {
+				display: flex;
+				height: 90%;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+			}
+
+
+			.Aligner-footer {
+				display: flex;
+				height: 10%;
+				align-items:right;
+				justify-content: flex-end;
+			}
+
+			.footer {
+				align-self: flex-end;
+			}
+
+			a, a:visited, a:active {
+				color: white;
+
+			}
+		</style>
+	</head>
+	<body>
+		<div class="Aligner">
+			<div class="Aligner-item" id="william-return"></div>
+		</div>
+		<div class="Aligner-footer">
+
+			<div class="footer"><a href="#" onclick="doAnimation();">Replay</a> or <a href="create.html">create your own</a> return message</div>
+		</div>
+	</body>
+
+</html>
