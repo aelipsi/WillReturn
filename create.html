@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Create a "Will Return"</title>
+		<script>
+			function updateLink() {
+				let formValue = document.getElementById("form").value;
+				let endpoint = "return.html?name="+btoa(formValue);
+				document.getElementById("link").href=endpoint;
+  				let copyText = document.getElementById("copybox");
+				copyText.value=window.location.origin+"/"+endpoint;
+			}
+			function copy() {
+				let copyText = document.getElementById("copybox");
+				copyText.select();
+				document.execCommand("copy");
+			}
+
+		</script>
+	</head>
+	<body>
+		<input id="form" type="text" value="Disco"/><button onclick="updateLink()">Generate</button>
+		<br />
+		<a id="link" href="#" target="_blank">Announce the Return</a>
+		<br />
+		<input type="text" id="copybox" /><button onclick="copy()">Copy</button>
+	</body>
+
+
+
+</html>
