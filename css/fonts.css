@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Play Regular'), local('Play-Regular'), url(../fonts/GoogleFont.ttf), url(https://fonts.gstatic.com/s/play/v11/6aez4K2oVqwIvtU2Gg.ttf) format('truetype');
+}
