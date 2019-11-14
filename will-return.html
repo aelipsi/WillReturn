@@ -3,6 +3,7 @@
 	<head>
 		<link href="css/font.css" rel="stylesheet">
 		<script src="js/jquery.min.js"></script>
+		<script src="js/b64encoder.js"></script>
 		<script>
 		$(document).ready(function() {
 			writeReturn(getUrlParameter("name"));
@@ -17,7 +18,7 @@
 				if (name === undefined) {
 					name = "null";
 				} else {
-					name = atob(name);
+					name = betterAtob(name);
 				}
 				var cleanName = "";
 				var letterCount = name.length;

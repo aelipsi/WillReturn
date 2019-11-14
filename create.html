@@ -2,10 +2,11 @@
 <html lang="en">
 	<head>
 		<title>Create a "Will Return"</title>
+		<script src="js/b64encoder.js"></script>
 		<script>
 			function updateLink() {
 				let formValue = document.getElementById("form").value;
-				let endpoint = "return.html?name="+btoa(formValue);
+				let endpoint = "return.html?name="+betterBtoa(formValue);
 				document.getElementById("link").href=endpoint;
   				let copyText = document.getElementById("copybox");
 				copyText.value=window.location.origin+"/"+endpoint;
